@@ -48,4 +48,11 @@ public class Customer {
     public void setReservationList(List<Reservation> reservationList) {
         this.reservationList = reservationList;
     }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", nif=" + nif;
+    }
 }

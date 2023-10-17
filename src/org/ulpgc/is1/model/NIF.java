@@ -1,12 +1,19 @@
 package org.ulpgc.is1.model;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NIF {
     private String number;
+    private static final String NIF_REGEX = "^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$";
 
     public NIF(String number) {
-        this.number = number;
+        if (isValid(number)) {
+            this.number = number;
+        } else {
+            this.number = "XXXX";
+        }
     }
 
     public String getNumber() {
@@ -18,11 +25,16 @@ public class NIF {
     }
 
     public static boolean isValid(String nif) {
-        String NIF_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
-        String number = nif.substring(0, nif.length() - 1);
-        if (number.length() != 8) return false;
-        boolean valid;
-        valid = nif.charAt(nif.length() - 1) == NIF_letters.charAt(Integer.parseInt(number) % 23);
-        return valid;
+        if (nif == null) {
+            return false;
+        }
+        Pattern pattern = Pattern.compile(NIF_REGEX);
+        Matcher matcher = pattern.matcher(nif);
+        return matcher.matches();
+    }
+
+    @Override
+    public String toString() {
+        return "NIF=" + number;
     }
 }

@@ -12,8 +12,8 @@ public class Reservation {
     private Court court;
     private List<Extra> extraList;
 
-    public Reservation(int id, LocalDateTime date, Customer customer, Court court, List<Extra> extraList) {
-        this.id = id;
+    public Reservation(LocalDateTime date, Customer customer, Court court, List<Extra> extraList) {
+        this.id = NEXT_ID;
         this.date = date;
         this.customer = customer;
         this.court = court;

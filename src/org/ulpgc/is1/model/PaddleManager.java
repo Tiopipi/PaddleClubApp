@@ -48,8 +48,8 @@ public class PaddleManager {
         return courtsList.get(index);
     }
 
-    public void reserve(int id, Customer customer, Court court, List<Extra> extraList){
-        Reservation reservation = new Reservation(id, LocalDateTime.now(), customer, court, extraList);
+    public void reserve(Customer customer, Court court, List<Extra> extraList){
+        Reservation reservation = new Reservation(LocalDateTime.now(), customer, court, extraList);
         System.out.println("Su reserva ha sido realizada con éxito");
     }
 }
