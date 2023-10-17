@@ -1,17 +1,18 @@
 package org.ulpgc.is1.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 public class Reservation {
     private static int NEXT_ID = 0;
     private final int id;
-    private Date date;
+    private final LocalDateTime date;
     private Customer customer;
     private Court court;
     private List<Extra> extraList;
 
-    public Reservation(int id, Date date, Customer customer, Court court, List<Extra> extraList) {
+    public Reservation(int id, LocalDateTime date, Customer customer, Court court, List<Extra> extraList) {
         this.id = id;
         this.date = date;
         this.customer = customer;
@@ -31,12 +32,8 @@ public class Reservation {
         return id;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Customer getCustomer() {
