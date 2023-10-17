@@ -17,18 +17,12 @@ public class NIF {
         this.number = number;
     }
 
-    public static boolean isValid(String nif){
+    public static boolean isValid(String nif) {
         String NIF_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
-        String number = nif.substring(0, nif.length()-1);
+        String number = nif.substring(0, nif.length() - 1);
+        if (number.length() != 8) return false;
         boolean valid;
-        valid = nif.charAt(nif.length()-1) == NIF_letters.charAt(Integer.parseInt(number) % 23);
+        valid = nif.charAt(nif.length() - 1) == NIF_letters.charAt(Integer.parseInt(number) % 23);
         return valid;
-
     }
-
-    public static void main(String[] args) {
-        System.out.println(isValid("45351203X"));
-    }
-
-
 }
