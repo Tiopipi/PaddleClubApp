@@ -8,6 +8,7 @@ public class Main {
     public static void innit(PaddleManager paddleManager){
         paddleManager.addCustomer("Pablo", "Escobar", new NIF("46253476Q"));
         paddleManager.addCustomer("Manolo", "Hernández", new NIF("12SD34TT4"));
+        paddleManager.addCustomer("Horacio", "García", new NIF("ST24RT456"));
         paddleManager.addCourt("Rápida", 40, CourtType.fastCourt);
         paddleManager.addCourt("Lenta", 35, CourtType.slowCourt);
 
@@ -20,8 +21,13 @@ public class Main {
         System.out.println(paddleManager.getCustomer(0));
         System.out.println(paddleManager.getCustomer(1));
         System.out.println(paddleManager.getCourt(1));
-        //paddleManager.reserve(paddleManager.getCustomer(0), paddleManager.getCourt(1), paddleManager.getCustomersList().get(0).getReservationList().get(0).getExtraList());
-
+        paddleManager.reserve(paddleManager.getCustomer(0), paddleManager.getCourt(1));
+        paddleManager.reserve(paddleManager.getCustomer(1), paddleManager.getCourt(0), null, "Horacio", "García");
+        paddleManager.reserve(paddleManager.getCustomer(0), paddleManager.getCourt(0), "Raqueta", "Carlos", "Alcaraz");
+        paddleManager.reserve(paddleManager.getCustomer(2), paddleManager.getCourt(1), "Pelotas", null, null);
+        paddleManager.removeCustomer(1);
+        System.out.println(paddleManager.countCustomer());
+        paddleManager.getReservationList().stream().forEach(System.out::println);
     }
 
 }

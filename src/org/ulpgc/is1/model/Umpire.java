@@ -26,4 +26,12 @@ public class Umpire extends Extra{
     public String getName() {
         return name + " " + surname;
     }
+
+    @Override
+    public String toString() {
+        return "Umpire{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 }

@@ -51,8 +51,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
+        return "{name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", nif=" + nif;
+                ", " + nif +
+                "}";
     }
+
+
 }

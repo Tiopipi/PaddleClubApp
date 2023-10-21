@@ -8,10 +8,12 @@ import java.util.List;
 public class PaddleManager {
     private List<Customer> customersList;
     private List<Court> courtsList;
+    private List<Reservation> reservationList;
 
     public PaddleManager() {
         customersList = new ArrayList<>();
         courtsList = new ArrayList<>();
+        reservationList = new ArrayList<>();
     }
 
     public List<Customer> getCustomersList() {
@@ -35,6 +37,21 @@ public class PaddleManager {
         if(!customersList.contains(customer)) customersList.add(customer);
     }
 
+    public void removeCustomer(int index) {
+        int i = 0;
+        while (i < reservationList.size()) {
+            if (reservationList.get(i).getCustomer().getName().equals(customersList.get(index).getName())) {
+                reservationList.remove(i);
+            }
+            i++;
+        }
+        customersList.remove(index);
+    }
+
+    public int countCustomer() {
+        return customersList.size();
+    }
+
     public void addCourt(String name, int price, CourtType type){
         Court court = new Court(name, price, type);
         if(!courtsList.contains(court)) courtsList.add(court);
@@ -48,8 +65,27 @@ public class PaddleManager {
         return courtsList.get(index);
     }
 
-    public void reserve(Customer customer, Court court, List<Extra> extraList){
-        Reservation reservation = new Reservation(LocalDateTime.now(), customer, court, extraList);
-        System.out.println("Su reserva ha sido realizada con éxito");
+
+    public void reserve(Customer customer, Court court){
+        Reservation reservation = new Reservation(LocalDateTime.now(), customer, court);
+        reservationList.add(reservation);
+    }
+
+    public void reserve(Customer customer, Court court, String equipment, String name, String surname){
+        Reservation reservation = new Reservation(LocalDateTime.now(), customer, court);
+        if (equipment == null) reservation.addUmpire(name, surname);
+        else if ((name == null) && (surname == null)) {
+            reservation.addEquipment(equipment);
+        } else {
+            reservation.addEquipment(equipment);
+            reservation.addUmpire(name, surname);
+        }
+            reservationList.add(reservation);
+    }
+
+
+
+    public List<Reservation> getReservationList() {
+        return reservationList;
     }
 }
