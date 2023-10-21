@@ -1,5 +1,6 @@
 package org.ulpgc.is1.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,13 +67,13 @@ public class PaddleManager {
     }
 
 
-    public void reserve(Customer customer, Court court){
-        Reservation reservation = new Reservation(LocalDateTime.now(), customer, court);
-        reservationList.add(reservation);
+    public void reserve(int year, int month, int day,Customer customer, Court court){
+        Reservation reservation = new Reservation(LocalDate.of(year, month, day), customer, court);
+        if(!reservationList.contains(reservation)) reservationList.add(reservation);
     }
 
-    public void reserve(Customer customer, Court court, String equipment, String name, String surname){
-        Reservation reservation = new Reservation(LocalDateTime.now(), customer, court);
+    public void reserve(int year, int month, int day, Customer customer, Court court, String equipment, String name, String surname){
+        Reservation reservation = new Reservation(LocalDate.of(year, month, day), customer, court);
         if (equipment == null) reservation.addUmpire(name, surname);
         else if ((name == null) && (surname == null)) {
             reservation.addEquipment(equipment);
@@ -80,7 +81,7 @@ public class PaddleManager {
             reservation.addEquipment(equipment);
             reservation.addUmpire(name, surname);
         }
-            reservationList.add(reservation);
+        if(!reservationList.contains(reservation)) reservationList.add(reservation);
     }
 
 

@@ -1,5 +1,6 @@
 package org.ulpgc.is1.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,12 +9,12 @@ import java.util.List;
 public class Reservation {
     private static int NEXT_ID = 0;
     private final int id;
-    private final LocalDateTime date;
+    private final LocalDate date;
     private Customer customer;
     private Court court;
     private List<Extra> extraList;
 
-    public Reservation(LocalDateTime date, Customer customer, Court court) {
+    public Reservation(LocalDate date, Customer customer, Court court) {
         this.id = NEXT_ID;
         NEXT_ID += 1;
         this.date = date;
@@ -34,7 +35,7 @@ public class Reservation {
         return id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -89,7 +90,8 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-                "date=" + date +
+                "id=" + id +
+                ", date=" + date +
                 ", customer=" + customer +
                 ", court=" + court.getName() +
                 ", price= " + this.price() +

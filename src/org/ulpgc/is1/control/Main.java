@@ -21,10 +21,10 @@ public class Main {
         System.out.println(paddleManager.getCustomer(0));
         System.out.println(paddleManager.getCustomer(1));
         System.out.println(paddleManager.getCourt(1));
-        paddleManager.reserve(paddleManager.getCustomer(0), paddleManager.getCourt(1));
-        paddleManager.reserve(paddleManager.getCustomer(1), paddleManager.getCourt(0), null, "Horacio", "García");
-        paddleManager.reserve(paddleManager.getCustomer(0), paddleManager.getCourt(0), "Raqueta", "Carlos", "Alcaraz");
-        paddleManager.reserve(paddleManager.getCustomer(2), paddleManager.getCourt(1), "Pelotas", null, null);
+        paddleManager.reserve(2023, 2, 1, paddleManager.getCustomer(0), paddleManager.getCourt(1));
+        paddleManager.reserve(2023, 2, 10, paddleManager.getCustomer(1), paddleManager.getCourt(0), null, "Horacio", "García");
+        paddleManager.reserve(2023, 2, 21,paddleManager.getCustomer(0), paddleManager.getCourt(0), "Raqueta", "Carlos", "Alcaraz");
+        paddleManager.reserve(2023, 2, 24,paddleManager.getCustomer(2), paddleManager.getCourt(1), "Pelotas", null, null);
         paddleManager.removeCustomer(1);
         System.out.println(paddleManager.countCustomer());
         paddleManager.getReservationList().stream().forEach(System.out::println);
