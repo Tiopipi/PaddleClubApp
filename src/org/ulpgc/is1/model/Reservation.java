@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Reservation {
     private static int NEXT_ID = 0;
@@ -85,6 +86,15 @@ public class Reservation {
         Umpire umpire = new Umpire(20, name, surname);
         extraList.add(umpire);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reservation that = (Reservation) o;
+        return Objects.equals(date, that.date) && Objects.equals(customer, that.customer) && Objects.equals(court, that.court) && Objects.equals(extraList, that.extraList);
+    }
+
 
 
     @Override

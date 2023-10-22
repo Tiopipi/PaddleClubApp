@@ -3,13 +3,13 @@ package org.ulpgc.is1.model;
 public class Address {
     private String street;
     private int number;
-    private int floor;
+    private int postalCode;
     private String city;
 
-    public Address(String street, int number, int floor, String city) {
+    public Address(String street, int number, int postalCode, String city) {
         this.street = street;
         this.number = number;
-        this.floor = floor;
+        this.postalCode = postalCode;
         this.city = city;
     }
 
@@ -29,12 +29,12 @@ public class Address {
         this.number = number;
     }
 
-    public int getFloor() {
-        return floor;
+    public int getPostalCode() {
+        return postalCode;
     }
 
-    public void setFloor(int floor) {
-        this.floor = floor;
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getCity() {

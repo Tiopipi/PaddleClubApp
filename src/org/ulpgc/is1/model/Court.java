@@ -10,7 +10,7 @@ public class Court {
     private CourtType type;
 
     public Court(String name, int price, CourtType type) {
-        reservationList = new ArrayList<Reservation>();
+        reservationList = new ArrayList<>();
         this.name = name;
         this.price = price;
         this.type = type;

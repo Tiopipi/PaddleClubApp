@@ -14,7 +14,7 @@ public class Customer {
         this.name = name;
         this.surname = surname;
         this.nif = nif;
-        reservationList = new ArrayList<Reservation>();
+        reservationList = new ArrayList<>();
     }
 
     public String getName() {

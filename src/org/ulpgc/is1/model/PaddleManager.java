@@ -10,11 +10,13 @@ public class PaddleManager {
     private List<Customer> customersList;
     private List<Court> courtsList;
     private List<Reservation> reservationList;
+    private List<Member> memberList;
 
     public PaddleManager() {
         customersList = new ArrayList<>();
         courtsList = new ArrayList<>();
         reservationList = new ArrayList<>();
+        memberList = new ArrayList<>();
     }
 
     public List<Customer> getCustomersList() {
@@ -33,6 +35,22 @@ public class PaddleManager {
         this.courtsList = courtsList;
     }
 
+    public List<Reservation> getReservationList() {
+        return reservationList;
+    }
+
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
+
+    public List<Member> getMemberList() {
+        return memberList;
+    }
+
+    public void setMemberList(List<Member> memberList) {
+        this.memberList = memberList;
+    }
+
     public void addCustomer(String name, String surname, NIF nif){
         Customer customer = new Customer(name, surname, nif);
         if(!customersList.contains(customer)) customersList.add(customer);
@@ -49,13 +67,41 @@ public class PaddleManager {
         customersList.remove(index);
     }
 
+    public void addMember(String name, String surname, NIF nif, int points, String street, int number, int postalCode, String city){
+        Member member = new Member(name, surname, nif, points, street, number, postalCode, city);
+    }
+
+    public void removeMember(int index) {
+        memberList.remove(index);
+    }
+
     public int countCustomer() {
         return customersList.size();
+    }
+    public int countCourt() {
+        return courtsList.size();
+    }
+    public int countMember() {
+        return memberList.size();
+    }
+    public int countReservation() {
+        return reservationList.size();
     }
 
     public void addCourt(String name, int price, CourtType type){
         Court court = new Court(name, price, type);
         if(!courtsList.contains(court)) courtsList.add(court);
+    }
+
+    public void removeCourt(int index) {
+        int i = 0;
+        while (i < reservationList.size()) {
+            if (reservationList.get(i).getCourt().getName().equals(courtsList.get(index).getName())) {
+                reservationList.remove(i);
+            }
+            i++;
+        }
+        courtsList.remove(index);
     }
 
     public Customer getCustomer(int index){
@@ -64,6 +110,14 @@ public class PaddleManager {
 
     public Court getCourt(int index){
         return courtsList.get(index);
+    }
+
+    public Reservation getReservation(int index){
+        return reservationList.get(index);
+    }
+
+    public Member getMember(int index){
+        return memberList.get(index);
     }
 
 
@@ -86,7 +140,5 @@ public class PaddleManager {
 
 
 
-    public List<Reservation> getReservationList() {
-        return reservationList;
-    }
+
 }
